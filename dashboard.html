@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Dashboard</title>
+</head>
+<body>
+  <h2 class="text1">Welcome to the Dashboard!</h2>
+  <p class="text3" id="welcomeMessage"></p>
+  
+   <!-- Wish Registration Form -->
+  <h3>Register Your Wish</h3>
+  <form id="wishForm">
+    <label for="wish">Enter your wish:</label>
+    <input type="text" id="wish" name="wish" placeholder="Write your wish here" required>
+    
+    <label for="period">Choose a reminder period:</label>
+    <select id="period" name="period">
+      <option value="90">3 months</option>
+      <option value="180">6 months</option>
+      <option value="365">1 year</option>
+    </select>
+    
+    <button type="button" onclick="registerWish()">Register Wish</button>
+  </form>
+
+  <p id="confirmationMessage"></p>
+
+  <script>
+     // Check if a user is logged in
+    var loggedInUser = localStorage.getItem("loggedInUser");
+
+    if (!loggedInUser) {
+      // If no user is logged in, redirect to the login page
+      window.location.href = "dashboard.html";
+    } else {
+      // Display a welcome message with the logged-in user's name
+      document.getElementById("welcomeMessage").textContent = "Hello, " + loggedInUser + "! You are successfully logged in.";
+    }
+
+    
+    // Logout function
+    function logout() {
+      // Clear the logged-in user from localStorage
+      localStorage.removeItem("loggedInUser");
+      alert("You have been logged out.");
+      // Redirect to the login page
+      window.location.href = "mypage.html";
+    }
+
+    // Register Wish function
+    function registerWish() {
+      var wish = document.getElementById("wish").value;
+      var period = parseInt(document.getElementById("period").value); // Period in days
+
+      if (wish) {
+        // Create an object to store the wish details
+        var wishDetails = {
+          user: loggedInUser,
+          wish: wish,
+          reminderDate: new Date().getTime() + period * 24 * 60 * 60 * 1000 // Set reminder date in milliseconds
+        };
+
+        // Store the wish in localStorage
+        var wishes = JSON.parse(localStorage.getItem("wishes") || "[]");
+        wishes.push(wishDetails);
+        localStorage.setItem("wishes", JSON.stringify(wishes));
+
+        // Display confirmation message
+        document.getElementById("confirmationMessage").textContent = "Your wish has been registered successfully!";
+
+        // Clear the form
+        document.getElementById("wishForm").reset();
+      } else {
+        alert("Please enter a wish.");
+      }
+    }
+  </script>
+
+  <br><button onclick="logout()">Logout</button>
+</body>
+</html>

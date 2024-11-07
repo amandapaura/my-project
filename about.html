@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@408&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Playwrite US Modern' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <div class="header">
+    <h1 class="text1"> Manifesto of Words </h1>
+  </div>
+
+  <div class="navbar">
+    <a href="mypage.html">Home</a>
+    <a href="about.html">About</a>
+    <div class="dropdown">
+      <button class="dropbtn">Readings 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="https://www.mentalhealth.com/tools/science-of-manifestation"> Science of Manifastation</a>
+        <a href="https://www.openbible.info/topics/manifestation"> 100 Bible Verses About Manifastation</a>
+        <a href="https://dailystoic.com/law-of-attraction/">Stoicism and The Law of Attraction</a>
+      </div>
+    </div>
+  
+    <div>
+  	  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+        <div id="id01" class="modal">
+    
+          <form class="modal-content animate" action="/action_page.php" method="post">
+        
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="travel_letter_white.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+              <label for="uname"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="uname" required>
+
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+
+              <button type="button" class="loginbtn" onclick="login()">Login</button>
+              <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+            </div>
+
+            <div class="container">
+              <button type="button" onclick="window.location.href='register.html'">Register</button>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+
+          </form>
+          <script>
+            // Login function
+            function login() {
+              var username = document.querySelector('[name="uname"]').value;
+              var password = document.querySelector('[name="psw"]').value;
+          
+              // Retrieve existing users from localStorage
+              var users = JSON.parse(localStorage.getItem("users") || "[]");
+              var validUser = users.find(user => user.username === username && user.password === password);
+          
+              if (validUser) {
+                alert("Login successful!");
+                // Redirect to a different page, like a dashboard
+                window.location.href = "dashboard.html";
+              } else {
+                alert("Invalid username or password. Please try again.");
+              }
+            }
+          </script>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-block">
+    <!-- Replace with your image source -->
+
+    <img src="amandapaura.jpeg" alt="Amanda Paura" class="image3">
+
+    <div class="text-left-block">
+        <pre>
+            <h2 class="text3">About Me</h2>
+            <p class="text7">
+                
+                Welcome to my site! I'm Amanda, a passionate data scientist with over six years of experience in transforming data into actionable insights. My journey in data science has allowed me to explore various domains, from fraud detection to advanced analytics, enabling businesses to make informed decisions.
+
+                <br><br>Currently, I am working on this project as part of my college coursework, where I aim to integrate my technical skills with my spiritual and Christian values. My faith inspires me to seek deeper meanings in life and encourages me to uplift others through knowledge sharing and collaboration.
+
+                <br><br>This site is a culmination of my passion for data and my belief in the power of words and faith. Here, I aim to create a space where we can explore insights together, empowering each other to shape our realities positively.
+
+                <br><br>Thank you for visiting, and I hope you find inspiration and value in the content here!
+            </p>
+        </pre>
+    </div>
+     
+  </div>
+
+  <div class="container-block">
+    <img src="travel_letter.png" alt="Description of the image" class="image2"> <!-- Replace with your image source -->
+
+    <div class="text-left-block">
+        <pre>
+          <h2 class="text3"> <font style="font-size: 25px;">Follow me at Linkedin.</font> </h2>
+          <a href="https://www.linkedin.com/in/amanda-paura"> <img src="linkedin.png" alt="Description of the image" class="image4"></a>
+        </pre>
+    </div>
+  </div>
+
+
+  <h2 class="text2">Modal Login Form Amanda</h2>
+
+  <div>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+      <div id="id01" class="modal">
+  
+        <form class="modal-content animate" action="/action_page.php" method="post">
+      
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="travel_letter_white.png" alt="Avatar" class="avatar">
+          </div>
+
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="button" class="loginbtn" onclick="login()">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          </div>
+
+          <div class="container">
+            <button type="button" onclick="window.location.href='register.html'">Register</button>
+          </div>
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+
+        </form>
+        <script>
+          // Login function
+          function login() {
+            var username = document.querySelector('[name="uname"]').value;
+            var password = document.querySelector('[name="psw"]').value;
+        
+            // Retrieve existing users from localStorage
+            var users = JSON.parse(localStorage.getItem("users") || "[]");
+            var validUser = users.find(user => user.username === username && user.password === password);
+        
+            if (validUser) {
+              alert("Login successful!");
+              // Redirect to a different page, like a dashboard
+              window.location.href = "dashboard.html";
+            } else {
+              alert("Invalid username or password. Please try again.");
+            }
+          }
+        </script>
+
+    </div>
+  </div>
+
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
+
+</body>
+</html>
