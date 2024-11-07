@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Register</title>
+</head>
+<body>
+
+<!-- Registration Form -->
+<div class="modal-content animate" id="registerForm">
+  <div class="imgcontainer">
+    <img src="travel_letter_white.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <h2>Create Account</h2>
+
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+    <button type="button" onclick="register()">Register</button>
+  </div>
+
+  <div class="container">
+    <button type="button" onclick="window.location.href='mypage.html'" class="cancelbtn">Cancel</button>
+    <span class="psw">Already have an account? <a href="login.html">Sign in</a></span>
+  </div>
+</div>
+
+<script>
+  // Registration function
+  function register() {
+    var username = document.querySelector('[name="uname"]').value;
+    var email = document.querySelector('[name="email"]').value;
+    var password = document.querySelector('[name="psw"]').value;
+    var passwordRepeat = document.querySelector('[name="psw-repeat"]').value;
+
+    // Validation checks
+    if (username === "" || email === "" || password === "" || passwordRepeat === "") {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    if (password !== passwordRepeat) {
+      alert("Passwords do not match. Please try again.");
+      return;
+    }
+
+    // Retrieve existing users from localStorage
+    var users = JSON.parse(localStorage.getItem("users") || "[]");
+    var userExists = users.some(user => user.username === username);
+
+    if (userExists) {
+      alert("Username already taken. Please choose a different username.");
+      return;
+    }
+
+    // Save the new user
+    users.push({ username: username, email: email, password: password });
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Registration successful! You can now log in.");
+    window.location.href = "login.html"; // Redirect to login page
+  }
+</script>
+
+</body>
+</html>
